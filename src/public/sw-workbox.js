@@ -3,12 +3,11 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.5.4/workbox
 workbox.setConfig({ debug: false });
 
 workbox.precaching.precacheAndRoute([
-  { url: '/', revision: null },
-  { url: '/index.html', revision: null },
-  { url: '/styles/styles.css', revision: null },
-  { url: '/scripts/index.js', revision: null },
-  { url: '/public/favicon.png', revision: null },
-  { url: '/public/manifest.json', revision: null },
+  { url: 'index.html', revision: null },
+  { url: 'styles/styles.css', revision: null },
+  { url: 'scripts/index.js', revision: null },
+  { url: 'favicon.png', revision: null },
+  { url: 'manifest.json', revision: null },
 ]);
 
 workbox.routing.registerRoute(
