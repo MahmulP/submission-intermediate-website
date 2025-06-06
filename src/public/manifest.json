@@ -1,0 +1,44 @@
+{
+  "name": "Story App",
+  "short_name": "StoryApp",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f6fafd",
+  "theme_color": "#1a3a5d",
+  "description": "Aplikasi berbagi cerita dengan PWA",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Add Story",
+      "short_name": "Add",
+      "description": "Tambah cerita baru",
+      "url": "/#/add-story",
+      "icons": [{ "src": "/public/favicon.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshot-desktop.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/screenshot-mobile.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}
