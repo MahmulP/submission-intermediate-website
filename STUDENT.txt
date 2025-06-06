@@ -1,2 +1,2 @@
-APP_URL=https://mahmulp.github.io/submission-intermediate-website/
+APP_URL=https://mahmulp.netlify.app/
 MAP_SERVICE_API_KEY=<api_key>

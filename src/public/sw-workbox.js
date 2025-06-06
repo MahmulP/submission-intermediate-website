@@ -4,8 +4,6 @@ workbox.setConfig({ debug: false });
 
 workbox.precaching.precacheAndRoute([
   { url: 'index.html', revision: null },
-  { url: 'styles/styles.css', revision: null },
-  { url: 'scripts/index.js', revision: null },
   { url: 'favicon.png', revision: null },
   { url: 'manifest.json', revision: null },
 ]);
@@ -29,3 +27,15 @@ workbox.routing.registerRoute(
     ],
   })
 );
+
+self.addEventListener('push', function(event) {
+  let data = {};
+  try {
+    data = event.data.json();
+  } catch (e) {
+    data = { title: 'Notification', options: { body: event.data && event.data.text() } };
+  }
+  const title = data.title || 'Notification';
+  const options = data.options || { body: '' };
+  event.waitUntil(self.registration.showNotification(title, options));
+});

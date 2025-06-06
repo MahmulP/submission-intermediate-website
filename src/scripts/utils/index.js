@@ -10,8 +10,7 @@ function urlBase64ToUint8Array(base64String) {
 
 export async function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
-    const swUrl = `${import.meta.env.BASE_URL}sw-workbox.js`;
-    return navigator.serviceWorker.register(swUrl);
+    return navigator.serviceWorker.register('/sw-workbox.js');
   }
   throw new Error('Service Worker not supported');
 }
@@ -32,8 +31,7 @@ export async function subscribePushNotification(token) {
 }
 
 export async function unsubscribePushNotification(token) {
-  const swUrl = `${import.meta.env.BASE_URL}sw-workbox.js`;
-  const registration = await navigator.serviceWorker.getRegistration(swUrl);
+  const registration = await navigator.serviceWorker.getRegistration('/service-worker.js');
   if (!registration) return;
 
   const subscription = await registration.pushManager.getSubscription();
