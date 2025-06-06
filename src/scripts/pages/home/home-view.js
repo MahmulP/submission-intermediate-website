@@ -1,6 +1,14 @@
 import { getLoadingTemplate } from '../../utils/index.js';
 import L from 'leaflet';
 
+const storyIcon = L.icon({
+  iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
+  iconSize: [32, 40],
+  iconAnchor: [16, 40], 
+  popupAnchor: [0, -36],
+  shadowUrl: null,
+});
+
 export default class HomeView {
   #map = null;
   #markers = [];
@@ -45,7 +53,7 @@ export default class HomeView {
 
     storiesWithLocation.forEach(story => {
       if (story.lat && story.lon) {
-        const marker = L.marker([story.lat, story.lon]).addTo(this.#map);
+        const marker = L.marker([story.lat, story.lon], { icon: storyIcon }).addTo(this.#map);
         marker.bindPopup(`<b>${story.name}</b><br>${story.description}`);
         this.#markers.push(marker);
       }

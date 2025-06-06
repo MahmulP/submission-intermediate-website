@@ -16,16 +16,16 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-    ({request}) => request.destination === 'image',
-    new workbox.strategies.CacheFirst()
+  ({request}) => request.destination === 'image',
+  new workbox.strategies.CacheFirst()
 );
 
 workbox.routing.registerRoute(
-    ({ request }) => request.mode === 'navigate',
-    new workbox.strategies.NetworkFirst({
-        cacheName: 'pages',
-        plugins: [
-            new workbox.expiration.ExpirationPlugin({ maxEntries: 50 }),
-        ],
-    })
+  ({ request }) => request.mode === 'navigate',
+  new workbox.strategies.NetworkFirst({
+    cacheName: 'pages',
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  })
 );

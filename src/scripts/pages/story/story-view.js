@@ -2,6 +2,14 @@ import { getLoadingTemplate } from '../../utils/index.js';
 import Camera from '../../utils/camera.js';
 import L from 'leaflet';
 
+const storyIcon = L.icon({
+  iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
+  iconSize: [32, 40],
+  iconAnchor: [16, 40],
+  popupAnchor: [0, -36],
+  shadowUrl: null,
+});
+
 export default class StoryView {
   #camera = null;
   #map = null;
@@ -85,7 +93,8 @@ export default class StoryView {
     if (this.#marker) {
       this.#marker.setLatLng([lat, lon]);
     } else {
-      this.#marker = L.marker([lat, lon]).addTo(this.#map);
+      // Use the custom story icon here
+      this.#marker = L.marker([lat, lon], { icon: storyIcon }).addTo(this.#map);
     }
     this.#map.setView([lat, lon], 12);
   }
