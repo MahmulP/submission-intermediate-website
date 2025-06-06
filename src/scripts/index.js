@@ -14,28 +14,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   await app.renderPage();
 
-  const token = localStorage.getItem('token');
-  if (token) {
-    let permission = Notification.permission;
-    if (permission === 'default') {
-      permission = await Notification.requestPermission();
-    }
-    if (permission === 'granted') {
-      try {
-        await subscribePushNotification(token);
-        if (!sessionStorage.getItem('pushSubscribed')) {
-          alert('Push notifications subscribed successfully!');
-          sessionStorage.setItem('pushSubscribed', 'true');
-        }
-      } catch (err) {
-        alert(`Failed to subscribe to push notifications: ${err.message}`);
-      }
-    } else if (permission === 'denied') {
-      alert('You have blocked notifications. Please enable them in your browser settings to receive push notifications.');
-    }
-  }
-
   window.addEventListener('hashchange', async () => {
+    console.log('Hash changed:', location.hash);
     Camera.stopAllStreams();
     await app.renderPage();
   });
